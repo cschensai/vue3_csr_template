@@ -1,0 +1,36 @@
+{
+  "name": "desty-wallet",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --mode development",
+    "test": "vite build --mode test",
+    "staging": "vite build --mode staging",
+    "build": "vite build --mode production",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^0.27.1",
+    "dayjs": "^1.11.2",
+    "desty-design": "^1.0.0",
+    "element-plus": "^2.1.11",
+    "lodash": "^4.17.21",
+    "qs": "^6.10.3",
+    "vue": "3.2.24",
+    "vue-axios": "^3.4.1",
+    "vue-cookies": "^1.8.0",
+    "vue-i18n": "^9.1.9",
+    "vue-router": "^4.0.14",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.1",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "unplugin-auto-import": "^0.7.1",
+    "unplugin-element-plus": "^0.4.0",
+    "unplugin-vue-components": "^0.19.3",
+    "vite": "^2.9.5",
+    "vite-plugin-svg-icons": "^2.0.1"
+  }
+}
