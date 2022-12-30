@@ -3,8 +3,9 @@ import { useMeta } from 'vue-meta';
 import { ElConfigProvider } from 'element-plus';
 import elementPlusId from 'element-plus/es/locale/lang/id';
 import elementPlusEn from 'element-plus/es/locale/lang/en';
-import { onMounted } from "vue";
+import { onBeforeMount, onMounted } from "vue";
 import { useStore } from "vuex";
+import flexible from './utils/flexible';
 const store = useStore();
 
 // TODO: meta 示例信息
@@ -26,7 +27,7 @@ useMeta(
   },
 )
 
-onMounted(() => {
+onBeforeMount(() => {
   if (document.body.clientWidth < 768) {
     store.commit("setIsMobileMode", true);
   }
@@ -38,6 +39,11 @@ onMounted(() => {
     }
   };
 });
+
+onMounted(() => {
+  // 设备自适配
+  flexible(window, document);
+});
 </script>
 
 <template>
@@ -45,7 +51,7 @@ onMounted(() => {
   <metainfo />
   <el-config-provider :locale="$store.state.language === 'id' ? elementPlusId : elementPlusEn">
     <div>
-        <router-view></router-view>
+      <router-view></router-view>
     </div>
   </el-config-provider>
 </template>
