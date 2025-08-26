@@ -58,6 +58,25 @@ export default defineConfig({
   },
   build: {
     // 为了适配nginx上的处理
-    assetsDir: "template"
+    assetsDir: "template",
+    rollupOptions: {
+      output: {
+        entryFileNames: "js/[name]-[hash].js",
+        chunkFileNames: "js/[name]-[hash].js",
+        assetFileNames: assetInfo => {
+          const extType = assetInfo.name.split(".").pop();
+          if (/css/i.test(extType)) {
+            return "css/[name]-[hash].[ext]";
+          }
+          if (/(png|jpe?g|gif|svg|webp|avif)/i.test(extType)) {
+            return "img/[name]-[hash].[ext]";
+          }
+          if (/(woff2?|eot|ttf|otf)/i.test(extType)) {
+            return "font/[name]-[hash].[ext]";
+          }
+          return 'assets/[name]-[hash].[ext]';
+        },
+      },
+    },
   }
 });
